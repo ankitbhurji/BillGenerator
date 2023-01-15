@@ -1,0 +1,16 @@
+.homeContainer{
+    background-color: #B7C3D7;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    padding: 80px;
+    
+}
+
+.home{
+    background-color: white;
+    border-radius: 15px;
+    width: 1280px;
+    height:600px ;
+
+}
