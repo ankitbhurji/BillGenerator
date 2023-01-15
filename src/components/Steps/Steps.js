@@ -15,7 +15,6 @@ function Steps(props){
             setSteps({...steps, step1:true, step2:false, step3:false})
         }
     }
-    props.DATE(StepClick)
 
     return(
         <div className={styles.stepsContainer}>

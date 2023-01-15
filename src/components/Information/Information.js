@@ -24,7 +24,7 @@ function Information(props){
             //
         }
         console.log(checkInputs);
-        props.Data({name:"ankit"})
+        
     }
 
     function inputChange(e){

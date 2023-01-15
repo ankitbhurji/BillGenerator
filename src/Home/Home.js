@@ -15,12 +15,12 @@ function Home(props){
                 <div className='row'>
                     <div className='col-4'>
                         <div className={styles.steps}>
-                            <Steps DATE={setdate}/>  
+                            <Steps />  
                         </div>
                     </div>
                     <div className='col-8'>
                         <div className={styles.info}>
-                            <Information Data={setData}/>
+                            <Information />
                         </div>
                     </div>
                 </div>
