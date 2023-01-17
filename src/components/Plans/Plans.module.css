@@ -25,7 +25,6 @@
     padding: 20px;
     width: 121px;
     height: 140px;
-    /* background-color: #DADADA; */
 }
 .planContainerActive1{
   background-color: #DADADA;
@@ -98,7 +97,7 @@
     background-color: #D1D3DE;
     border-radius: 9px;
     height: 40px;
-    width: 390px;
+    width: 434px;
     text-align: center;
     margin-left: 11px;
     padding: 8px;

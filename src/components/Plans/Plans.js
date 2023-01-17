@@ -52,7 +52,8 @@ function Plans(props){
                         charges.map((data)=>{
                             return(
                                 <>
-                                    <div className='col-2'>
+                                    <div className='col-3'>
+                                        <div className={styles.planContainer1}>
                                         {/* <div className={plan=='1'?(`${styles.planContainer} ${styles.planContainerActive1}`):(styles.planContainer)} onClick={()=>{clickPlan(data.id, data.name, data.rate)}}> */}
                                         <div className={styles.planContainer} onClick={()=>{clickPlan(data.id, data.name, data.rate)}}>
                                             <div className='row'>
@@ -65,6 +66,7 @@ function Plans(props){
                                                     <p className={styles.planRate}>{!changeCharges.isChecked?('$' + data.rate + '/Month'):('$' + data.rate + '/Year')}</p>
                                                 </div> 
                                             </div>
+                                        </div>
                                         </div> 
                                     </div>  
                                 </>
@@ -127,7 +129,7 @@ function Plans(props){
                 </div>
                 <div className={styles.button}>
                     <div className='row'>
-                        <div className='col-4'>
+                        <div className='col-6'>
                             <button onClick={planBack} className={`${styles.backButton} ${styles.backButton1}`}>Go Back</button>
                         </div>
                         <div className='col-6'>
