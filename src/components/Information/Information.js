@@ -6,35 +6,32 @@ import styles from './Information.module.css';
 
 function Information(props){
 
-    // const [inputs, setInputes] = useState({})
     const [inputs, setInputes] = useState({name:'', email:'', phone:''})
-    const [checkInputs, setCheckInputs] = useState({isName:false, isEmail:false, isPhone:false})
+    const [checkInputs, setCheckInputs] = useState({isName:false, isEmail:false, isPhone:false, isPhoneLength:false})
+    
 
     function clickForm(e){
         e.preventDefault();
-
         if(inputs.name==''){
             setCheckInputs({...checkInputs, isName:true})
         }else if(inputs.email==''){
             setCheckInputs({...checkInputs, isEmail:true})
         }else if(inputs.phone==''){
-            setCheckInputs({...checkInputs, isPhone:true})
+            setCheckInputs({...checkInputs, isPhone:true});
+        }else if(inputs.phone.length<10 || inputs.phone.length>10){
+            setCheckInputs({...checkInputs, isPhoneLength:true})
         }
         else{
-            //
+            props.FormData({Data:inputs});
+            props.Steps({step1:false, step2:true, step3:false});
         }
-        console.log(checkInputs);
-        
     }
 
     function inputChange(e){
-        setCheckInputs({...checkInputs, isName:false, isEmail:false,isPhone:false})
+        setCheckInputs({...checkInputs, isName:false, isEmail:false,isPhone:false, isPhoneLength:false})
         const {name, value} = e.target;
         setInputes({...inputs, [name]:value});
-        // console.log(inputs)
     }
-
-
 
 
     return(
@@ -70,8 +67,8 @@ function Information(props){
                         <div className='row'>
                             <span className={styles.formHeading}>Phone</span>
                             <div className='col-8'>
-                                <input onChange={inputChange} name='phone' value={inputs.phone} type='text' placeholder='Enter your mobile no.'/>
-                                <p className={styles.warning}>{checkInputs.isPhone?('Please enter mobile number'):('')}</p>
+                                <input onChange={inputChange} name='phone' value={inputs.phone} type='number' placeholder='Enter your mobile no.'/>
+                                <p className={styles.warning}>{checkInputs.isPhone?('Please enter phone number !'):checkInputs.isPhoneLength?('Phone number is not valid !'):('')}</p>
                             </div>
                         </div>
                     </div>

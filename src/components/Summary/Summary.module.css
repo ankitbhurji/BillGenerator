@@ -1,44 +1,63 @@
-.infoContainer{
-    /* background-color: cyan; */
-    padding: 80px;
+.summaryContainer{
+    padding: 20px;
+    margin-top: 50px;
 }
-.infoHeading{
-    color: #04285A;
+.summary{
     font-size: 23px;
-    font-style: inherit;
+    color: #04285A;
+    font-family: Inter;
     font-weight: bold;
-    letter-spacing: 2px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
 }
 
-.formHeading{
+.detailsKeys{
     color: #04285A;
     font-size: 17px;
+    font-family: Roboto;
+    font-style: Medium;
+    font-weight: 800;
+    width: 500px;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+.detailsValues{
+    color: #143565;
+    font-size: 15px;
+    font-family: Roboto;
+    font-style: Regular;
+    font-weight: 400;
+    margin-left: 0px;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+.totalKey{
+    font-size: 20px;
+    color: #04285A;
+    font-family: Roboto;
+    font-style: Medium;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.totalValue{
+    font-size: 20px;
+    color: #04285A;
+    font-family: Roboto;
+    font-style: Medium;
     letter-spacing: 1px;
     font-weight: bold;
 }
-
-input[type='text'], input[type='number'], input[type='email']{
-    width: 250px;
-    height: 35px;
-    margin: 2px 0;
-    display: inline-block;
-    border: 1px solid #9E9E9E;
-    border-radius: 4px;
-    /* box-sizing: border-box; */
+.line{
+    border-bottom: 1px solid #A1A1A1;
+    width: 450px;
+    margin-left: 10px;
 }
 
-.infoInputs{
-    margin-top: 0px;
-}
-.warning{
-    color: red;
-}
 
 .button{
-    margin-top: 60px;
+    margin-top: 120px;
 }
-
+  
 .backButton{ 
     padding: 6px 14px;
     text-align: center;
@@ -76,6 +95,7 @@ input[type='text'], input[type='number'], input[type='email']{
     background-color: #001127; 
     color: white; 
     border: 2px solid #001127;
+    margin-left: 15px;
   }
   
   .nextButton1:hover {

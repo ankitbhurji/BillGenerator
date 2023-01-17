@@ -1,20 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Steps.module.css';
 
 function Steps(props){
 
-    const [steps, setSteps] = useState({step1:true, step2:false, step3:true});
+    const [steps, setSteps] = useState({});
 
-
-    function StepClick(){
-        if(steps.step2){
-            setSteps({...steps, step1:false, step3:false})
-        }else if(steps.step3){
-            setSteps({...steps, step1:false, step2:false})
-        }else{
-            setSteps({...steps, step1:true, step2:false, step3:false})
-        }
-    }
+    useEffect(()=>{
+        setSteps(props.stepData);
+    },[props])
+    
+   
 
     return(
         <div className={styles.stepsContainer}>
