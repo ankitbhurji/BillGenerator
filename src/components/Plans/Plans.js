@@ -3,6 +3,8 @@ import logo1 from '../../Images/logo1.svg'
 import logo2 from '../../Images/logo2.svg'
 import logo3 from '../../Images/logo3.svg'
 import { useEffect, useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Plans(props){
 
@@ -18,20 +20,49 @@ function Plans(props){
 
 
     function clickChange(){
-     setChangeCharges({...changeCharges, isChecked:!changeCharges.isChecked})
+     setChangeCharges({...changeCharges, isChecked:!changeCharges.isChecked});
+     if(!changeCharges.isChecked){
+        const newCharges = charges.map((data)=>{
+            return {...data, rate: data.rate*8}
+          })
+          setCharges(newCharges);
+     }else{
+        const oldCharges = charges.map((data)=>{
+            return {...data, rate: data.rate/8}
+          })
+          setCharges(oldCharges);
+     }
     }
+
     function clickPlan(id, name, rate){
         setPlanData({id, name, rate});
         setPlan(id)
-   }
-    function clickNext(){
-        props.planInputs(planData);
-        props.Steps({step1:false, step2:false, step3:true});
     }
+
+    function clickNext(){
+        if(plan==''){
+            // toast('Please select the your plan !');
+            toast.warn('Please select your plan !', {
+                position: "top-center",
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
+        }else{
+            props.planInputs(planData);
+            props.Steps({step1:false, step2:false, step3:true});
+        }
+    }
+
     function planBack(){
         props.PlanBack({step1:true, step2:false, step3:false})
     }
 
+
+    
 
 
     return(
@@ -49,13 +80,13 @@ function Plans(props){
                 </div>
                 <div className='row mt-4'>
                     {
-                        charges.map((data)=>{
+                        charges.map((data, index)=>{
                             return(
                                 <>
                                     <div className='col-3'>
                                         <div className={styles.planContainer1}>
-                                        {/* <div className={plan=='1'?(`${styles.planContainer} ${styles.planContainerActive1}`):(styles.planContainer)} onClick={()=>{clickPlan(data.id, data.name, data.rate)}}> */}
-                                        <div className={styles.planContainer} onClick={()=>{clickPlan(data.id, data.name, data.rate)}}>
+                                        {/* <div key={index} className={toggleActive(index)} onClick={()=>{clickPlan(data.id, data.name, data.rate, index)}}> */}
+                                        <div key={index} className={plan==index+1?(`${styles.planContainer} ${styles.planContainerActive}`):(styles.planContainer)} onClick={()=>{clickPlan(data.id, data.name, data.rate, index)}}>
                                             <div className='row'>
                                                 <div className={data.id==1?(styles.logo1):data.id==2?(styles.logo2):(styles.logo3)}><img src={data.logo} /></div>
                                             </div>
@@ -138,6 +169,18 @@ function Plans(props){
                     </div>
                 </div>
             </div>
+            <ToastContainer
+            position="top-center"
+            autoClose={false}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+             />
         </div>
     )
 }
